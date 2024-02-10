@@ -27,6 +27,11 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": {
+          "version": "17" 
+        }
+      },
     "rules": {
         "react/react-in-jsx-scope": "off",
     }
