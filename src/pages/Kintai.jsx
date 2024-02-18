@@ -78,7 +78,7 @@ const Kintai = () => {
         <Clock></Clock>
 
         <div className=" flex-col items-center space-y-4">
-          <p>出勤時間：{Date(shukkinTime)}</p>
+          <p>出勤時間あああ：{Date(shukkinTime)}</p>
           <button
             onClick={shukkin}
             disabled={shukkinButton}
