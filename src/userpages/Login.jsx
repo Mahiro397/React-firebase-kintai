@@ -29,7 +29,7 @@ const Login = () => {
         password
       );
       if (userCredential.user) {
-        navigate('/Top');
+        navigate('/Kintai');
       }
     } catch (error) {
       console.log(error);

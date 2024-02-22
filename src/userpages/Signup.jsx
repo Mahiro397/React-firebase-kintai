@@ -43,7 +43,7 @@ const Signup = () => {
         console.log(setDoc);
       }
 
-      navigate('/Top');
+      navigate('/Kintai');
       console.log('サインアップにせいこうしました');
     } catch (error) {
       console.log(error);
@@ -53,8 +53,8 @@ const Signup = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
-        console.log('ログインしています');
+        //console.log(user);
+        //console.log('ログインしています');
         navigate('/Kintai');
       } else {
         // ユーザーがログインしていない場合の処理

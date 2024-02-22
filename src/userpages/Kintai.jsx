@@ -9,13 +9,16 @@ import Clock from '../components/Clock.jsx';
 const Kintai = () => {
   const navigate = useNavigate();
   const [shukkinTime, setShukkinTime] = useState(' ');
+  //出勤ボタンを一回しか押せないようにするstate
   const [shukkinButton, setShukiinButton] = useState(false);
+  //退勤ボタンを一回しか押せないようにするstate
   const [taikinButton, settaiButton] = useState(true);
 
-  const [currentTime, setCurrentTime] = useState(new Date());
+  // const [currentTime, setCurrentTime] = useState(new Date());
 
   const authUser = auth.currentUser;
 
+  //ログインしているかどうか確認するEffect
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -32,6 +35,7 @@ const Kintai = () => {
     return () => unsubscribe();
   }, [navigate]);
 
+  //出勤ボタンを押したときの処理
   const shukkin = () => {
     const currentTime = new Date().toISOString();
 
@@ -46,26 +50,32 @@ const Kintai = () => {
     try {
       // 出勤時間と退勤時間の差分を計算
       const shukkinDateTime = new Date(shukkinTime);
-      const diffMilliseconds = currentTime - shukkinDateTime;
-      const diffHours = diffMilliseconds / (1000 * 60 * 60);
+      const workingHours = currentTime - shukkinDateTime;
+      const diffHours = workingHours / (1000 * 60 * 60);
 
-      // 労働時間から9時間を引いて残業時間を計算
+      // 小数点以下の時間を整数時間と分に変換
+      const hours = Math.floor(diffHours);
+      const minutes = Math.round((diffHours - hours) * 60);
+
+      // 残業時間を計算
       const overtime = Math.max(diffHours - 9, 0);
-      const overtimeHours = overtime < 0 ? 0 : overtime.toFixed(2);
-      console.log(overtimeHours);
+      const overtimeHours = overtime < 0 ? 0 : Math.floor(overtime);
+      const overtimeMinutes = Math.round((overtime - overtimeHours) * 60);
+      const overtimeString = overtimeHours + '時間' + overtimeMinutes + '分';
 
       const newDocRef = await addDoc(collection(db, 'attendance'), {
         auth: authUser.uid,
         auth_name: authUser.displayName,
         clock_in_time: shukkinTime,
         clock_out_time: currentTime.toISOString(),
-        overtime: overtimeHours,
+        overtime: overtimeString,
       });
 
       setShukiinButton(true);
       settaiButton(false);
-
-      console.log('新しいドキュメントが追加されました:', newDocRef.id);
+      alert('出勤データが登録されました');
+      //console.log('新しいドキュメントが追加されました:', newDocRef.id);
+      navigate('/Top');
     } catch (error) {
       console.error('データの登録に失敗しました:', error);
     }
@@ -78,7 +88,7 @@ const Kintai = () => {
         <Clock></Clock>
 
         <div className=" flex-col items-center space-y-4">
-          <p>出勤時間あああ：{Date(shukkinTime)}</p>
+          <p>出勤時間：{Date(shukkinTime)}</p>
           <button
             onClick={shukkin}
             disabled={shukkinButton}
