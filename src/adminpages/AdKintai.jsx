@@ -23,7 +23,7 @@ const AdKintai = () => {
       } else {
         // 許可されていない場合、サインアウト
         signOut(auth);
-        navigate('/');
+        navigate('/AdLogin');
       }
     }
   }, [user, navigate]);

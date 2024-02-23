@@ -29,7 +29,7 @@ const Logout = () => {
       });
     } else {
       // ユーザーがログインしていない場合の処理
-      navigate('/Login');
+      navigate('/');
     }
   }, [navigate]);
 

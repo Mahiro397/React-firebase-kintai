@@ -60,7 +60,7 @@ const Signup = () => {
         navigate('/Kintai');
       } else {
         // ユーザーがログインしていない場合の処理
-        console.log('ログインしていません');
+        //console.log('ログインしていません');
       }
     });
 

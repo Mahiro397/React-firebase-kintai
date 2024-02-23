@@ -27,7 +27,7 @@ const Kintai = () => {
       } else {
         // ユーザーがログインしていない場合の処理
         //console.log('ログインしていません');
-        navigate('/Login');
+        navigate('/');
       }
     });
 
