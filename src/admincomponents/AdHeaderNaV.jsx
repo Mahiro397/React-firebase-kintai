@@ -25,14 +25,12 @@ const AdHeaderNaV = () => {
           to="/AdminTop"
           className="font-medium text-primary-600 hover:underline dark:text-primary-500 mr-4" // Added margin-right
         >
-          {' '}
           社員名簿ページ
         </Link>
         <Link
           to="/AdKintai"
           className="font-medium text-primary-600 hover:underline dark:text-primary-500 mr-4" // Added margin-right
         >
-          {' '}
           勤怠管理ページ
         </Link>
       </nav>

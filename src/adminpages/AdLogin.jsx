@@ -38,8 +38,8 @@ const AdLogin = () => {
       }
       navigate('/AdminTop');
     } catch (error) {
-      console.log(error);
-      setError(error.message);
+      //console.log(error);
+      //setError(error.message);
     }
   };
 

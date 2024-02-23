@@ -23,7 +23,6 @@ const Home = () => {
   }, [navigate]);
   return (
     <section className="flex items-center justify-center min-h-screen bg-white">
-      <Link to="/AdLogin">管理者ページ</Link>
       <div className="w-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl lg:py-24">
         <div className="text-center">
           <h1 className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl">

@@ -157,12 +157,18 @@ const KintaiTable = () => {
     setMonthSalary(monthMoney);
   }, [overtimePay, salary]);
 
+  //残業代の計算
   const overtimeCalculataion = (hours, minutes) => {
-    const aaa = hours * 60;
-    const bbb = minutes + aaa;
+    //残業時間の時間の部分の単位をを分に変換。
+    const minuteConversion = hours * 60;
+    //変換した分と残業時間の分単位を足す
+    const totalMinute = minutes + minuteConversion;
+    //今月の基本給/月平均所定労働時間数 = 一時間の時給
     const hourSalary = salary / 160.6;
+    //一時間の時給/60 = 1分の時給
     const minutesSalary = hourSalary / 60;
-    const overtimeSalary = minutesSalary * 1.25 * bbb;
+    //1分の時給*1.25(残業割増)*残業時間（分）
+    const overtimeSalary = minutesSalary * 1.25 * totalMinute;
     setOvertimePay(Math.round(overtimeSalary));
   };
 

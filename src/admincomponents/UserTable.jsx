@@ -3,6 +3,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { auth, db, query, where } from '../main.jsx';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { doc, deleteDoc } from 'firebase/firestore';
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -30,6 +31,12 @@ const UserTable = () => {
 
     return () => unsubscribe();
   }, [navigate]);
+
+  const deltenClick = (id) => {
+    //console.log(id);
+    deleteDoc(doc(db, 'users', id));
+    alert('社員データを削除しました。');
+  };
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -65,7 +72,14 @@ const UserTable = () => {
               <td className="px-6 py-4">{data.id}</td>
               <td className="px-6 py-4">{data.email}</td>
               <td className="px-6 py-4">{data.name}</td>
-              <td className="px-6 py-4 text-right">削除</td>
+              <td className="px-6 py-4 text-right">
+                <button
+                  onClick={() => deltenClick(data.id)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  削除
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

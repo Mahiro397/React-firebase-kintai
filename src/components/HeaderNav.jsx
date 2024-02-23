@@ -23,16 +23,14 @@ const HeaderNav = () => {
       <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <Link
           to="/Kintai"
-          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+          className="font-medium text-primary-600 hover:underline dark:text-primary-500 mr-4"
         >
-          {' '}
           勤怠ページ
         </Link>
         <Link
           to="/Top"
-          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+          className="font-medium text-primary-600 hover:underline dark:text-primary-500 mr-4"
         >
-          {' '}
           Topページ
         </Link>
       </nav>
