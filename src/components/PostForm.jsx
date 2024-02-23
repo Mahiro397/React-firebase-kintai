@@ -13,7 +13,7 @@ const PostForm = ({ id }) => {
 
     //
     const workingHours = new Date(isoTaikinTime) - new Date(isoShukinTime);
-    console.log(workingHours);
+    //console.log(workingHours);
     const diffHours = workingHours / (1000 * 60 * 60);
 
     // 小数点以下の時間を整数時間と分に変換
@@ -33,7 +33,7 @@ const PostForm = ({ id }) => {
       overtime: overtimeString,
     });
 
-    console.log('更新成功');
+    alert('更新が完了しました。');
   };
 
   return (

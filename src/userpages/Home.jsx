@@ -11,7 +11,7 @@ const Home = () => {
       if (user) {
         //console.log(user);
         //console.log('ログインしています');
-        navigate('/Top');
+        navigate('/Kintai');
       } else {
         // ユーザーがログインしていない場合の処理
         // console.log('ログインしていません');

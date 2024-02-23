@@ -10,6 +10,7 @@ const Login = () => {
     password: '',
   });
 
+  const [error, setError] = useState('');
   const { email, password } = formData;
   const navigate = useNavigate();
 
@@ -32,7 +33,8 @@ const Login = () => {
         navigate('/Kintai');
       }
     } catch (error) {
-      console.log(error);
+      setError(error);
+      //console.log(error);
     }
   };
 
@@ -62,6 +64,7 @@ const Login = () => {
             </h1>
 
             <form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <div>
                 <label
                   htmlFor="email"
